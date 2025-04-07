@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sampath Matta - එළවළු, පලතුරු & මල් වෙළඳසැල</title>
+    <style>
+        /* මූලික ශෛලිය */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        /* හෙඩර් ශෛලිය */
+        header {
+            background: linear-gradient(135deg, #276d2b, #4ed311);
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(216, 53, 53, 0.2);
+            font-family: 'Arial Sinhala', 'Iskoola Pota', sans-serif;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        /* නැව්ගත කිරීමේ මෙනුව */
+        nav {
+            background-color: #0f551b;
+            padding: 0.8rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1.5rem;
+            margin: 0 0.5rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Arial Sinhala', 'Iskoola Pota', sans-serif;
+        }
+        
+        .nav-btn:hover {
+            background-color: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+        
+        .nav-btn.active {
+            background-color: rgba(255,255,255,0.3);
+            font-weight: bold;
+        }
+        
+        /* නිෂ්පාදන කොටස */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .product-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-img {
+            transform: scale(1.1);
+        }
+        
+        /* ඇණවුම් බොත්තම් */
+        .order-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #388e3c, #4caf50);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            font-family: 'Arial Sinhala', 'Iskoola Pota', sans-serif;
+        }
+        
+        .order-btn:hover {
+            background: linear-gradient(45deg, #2e7d32, #388e3c);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        
+        /* WhatsApp බොත්තම් */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 99;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+        
+        /* පාදකය */
+        footer {
+            background-color: #1b5e20;
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+        
+        /* ප්‍රතිචාරාත්මක මෙනුව */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                display: none;
+            }
+            
+            .nav-container.active {
+                display: flex;
+            }
+            
+            .nav-btn {
+                margin: 0.3rem 0;
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- හෙඩර් කොටස -->
+    <header>
+        <div class="logo">Sampath Matta</div>
+        <div class="tagline">එළවළු, පලතුරු & මල් වල ගුණාත්මක භාණ්ඩ</div>
+    </header>
+    
+    <!-- නැව්ගත කිරීමේ මෙනුව -->
+    <nav>
+        <div class="nav-container" id="navContainer">
+            <a href="#home" class="nav-btn active">මුල් පිටුව</a>
+            <a href="#vegetables" class="nav-btn">එළවළු</a>
+            <a href="#fruits" class="nav-btn">පලතුරු</a>
+            <a href="#flowers" class="nav-btn">මල්</a>
+            <a href="#about" class="nav-btn">ගැන</a>
+            <a href="#contact" class="nav-btn">අමතන්න</a>
+        </div>
+    </nav>
+    
+    <!-- ප්‍රධාන අන්තර්ගතය -->
+    <div class="main-content" style="max-width: 1200px; margin: 2rem auto; padding: 0 1rem;">
+        <!-- එළවළු කොටස -->
+        <section id="vegetables" style="margin-top: 2rem;">
+            <h2 style="text-align: center; margin: 2rem 0; color: #2e7d32; position: relative;">
+                තරුස එළවළු
+                <div style="width: 80px; height: 3px; background-color: #388e3c; margin: 0.5rem auto; border-radius: 3px;"></div>
+            </h2>
+            <div class="products">
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="එළවළු" class="product-img">
+                    <div style="padding: 1.5rem;">
+                        <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem; color: #1b5e20;">තරුස එළවළු</h3>
+                        <p style="color: #666; margin-bottom: 1rem; line-height: 1.5;">සෑම දිනකම නැවුම්ව ගෙන්වන ගුණාත්මක එළවළු</p>
+                        <a href="https://wa.me/94778529895?text=මම%20තරුස%20එළවළු%20ඇණවුම්%20කරන්න%20අවශ්ය%20ය" class="order-btn">ඇණවුම් කරන්න</a>
+                    </div>
+                </div>
+                
+                <!-- තවත් එළවළු එකතු කරන්න -->
+            </div>
+        </section>
+        
+        <!-- පලතුරු කොටස -->
+        <section id="fruits" style="margin-top: 4rem;">
+            <h2 style="text-align: center; margin: 2rem 0; color: #2e7d32; position: relative;">
+                පැණිරස පලතුරු
+                <div style="width: 80px; height: 3px; background-color: #388e3c; margin: 0.5rem auto; border-radius: 3px;"></div>
+            </h2>
+            <div class="products">
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="පලතුරු" class="product-img">
+                    <div style="padding: 1.5rem;">
+                        <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem; color: #1b5e20;">පැණිරස පලතුරු</h3>
+                        <p style="color: #666; margin-bottom: 1rem; line-height: 1.5;">ස්වාභාවිකව පැණිරසයෙන් පිරුණු පලතුරු</p>
+                        <a href="https://wa.me/94778529895?text=මම%20පැණිරස%20පලතුරු%20ඇණවුම්%20කරන්න%20අවශ්ය%20ය" class="order-btn">ඇණවුම් කරන්න</a>
+                    </div>
+                </div>
+                
+                <!-- තවත් පලතුරු එකතු කරන්න -->
+            </div>
+        </section>
+        
+        <!-- මල් කොටස -->
+        <section id="flowers" style="margin-top: 4rem;">
+            <h2 style="text-align: center; margin: 2rem 0; color: #2e7d32; position: relative;">
+                සුවඳවත් මල්
+                <div style="width: 80px; height: 3px; background-color: #388e3c; margin: 0.5rem auto; border-radius: 3px;"></div>
+            </h2>
+            <div class="products">
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1526397751294-331021109fbd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="මල්" class="product-img">
+                    <div style="padding: 1.5rem;">
+                        <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem; color: #1b5e20;">සුවඳවත් මල්</h3>
+                        <p style="color: #666; margin-bottom: 1rem; line-height: 1.5;">වර්ණවත් සහ සුවඳවත් මල් එකතුව</p>
+                        <a href="https://wa.me/94778529895?text=මම%20සුවඳවත්%20මල්%20ඇණවුම්%20කරන්න%20අවශ්ය%20ය" class="order-btn">ඇණවුම් කරන්න</a>
+                    </div>
+                </div>
+                
+                <!-- තවත් මල් එකතු කරන්න -->
+            </div>
+        </section>
+    </div>
+    
+    <!-- WhatsApp බොත්තම් -->
+    <a href="https://wa.me/94778529895" class="whatsapp-btn" target="_blank">💬</a>
+    
+    <!-- පාදකය -->
+    <footer>
+        <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
+            <h3 style="margin-bottom: 1.5rem; font-size: 1.5rem;">Sampath Matta</h3>
+            <p style="margin-bottom: 1rem;">එළවළු, පලතුරු සහ මල් වල ගුණාත්මක භාණ්ඩ</p>
+            <p style="margin-bottom: 1rem;">දුරකථන: <a href="tel:+94778529895" style="color: white; text-decoration: none;">077 852 9895</a></p>
+            <p style="margin-bottom: 1rem;">ලිපිනය: එළවළු මාර්කට්, කොළඹ</p>
+            <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                &copy; 2025 Sampath Matta. සියළුම හිමිකම් ඇවිරිණි.
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script>
+        // ප්‍රතිචාරාත්මක මෙනුව
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-btn');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // සක්‍රිය ටැබ් අනුව මෙනුව යාවත්කාලීන කිරීම
+            function updateActiveTab() {
+                const sections = document.querySelectorAll('section');
+                let currentSection = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (window.scrollY >= sectionTop - 100) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${currentSection}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', updateActiveTab);
+            updateActiveTab(); // ආරම්භක අවස්ථාවේදී යාවත්කාලීන කිරීම
+        });
+    </script>
+</body>
+</html>
